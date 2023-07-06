@@ -29,3 +29,15 @@ element+主题定制
 
 安装scss(npm i sass -D)->准备定制样式文件(官方要求 styles/element/index.scss)->对ElementPlus样式进行覆盖(通知Element采用scss语言->导入定制scss文件覆盖)
 
+
+
+axios基础配置
+
+1.安装npm i axios
+
+统一定义，有需求直接调用
+
+- 接口基地址
+- 接口超时时间
+- 请求拦截器
+- 响应拦截器
