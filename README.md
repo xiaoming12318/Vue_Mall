@@ -23,3 +23,9 @@ utils：工具函数文件夹
 
 首先在安装完vue后
 
+![屏幕截图 2023-07-06 185317](E:\Vue3\littleFreshRabbit\屏幕截图 2023-07-06 185317.png)
+
+element+主题定制
+
+安装scss(npm i sass -D)->准备定制样式文件(官方要求 styles/element/index.scss)->对ElementPlus样式进行覆盖(通知Element采用scss语言->导入定制scss文件覆盖)
+
