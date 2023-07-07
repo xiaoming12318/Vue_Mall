@@ -25,13 +25,13 @@ utils：工具函数文件夹
 
 ![屏幕截图 2023-07-06 185317](E:\Vue3\littleFreshRabbit\屏幕截图 2023-07-06 185317.png)
 
-element+主题定制
+**element+主题定制**
 
 安装scss(npm i sass -D)->准备定制样式文件(官方要求 styles/element/index.scss)->对ElementPlus样式进行覆盖(通知Element采用scss语言->导入定制scss文件覆盖)
 
 
 
-axios基础配置
+**axios基础配置**
 
 1.安装npm i axios
 
@@ -41,3 +41,45 @@ axios基础配置
 - 接口超时时间
 - 请求拦截器
 - 响应拦截器
+
+**路由设计：**
+
+设计首页和登录页的路由，路由设计原则：找内容切换的区域，如果是**页面整体切换**，**则为一级路由**
+
+路由写在**view**目录中，找内容切换的区域，如果是在一级路由页的内部切换，则为二级路由
+
+**父组件的子组件则可以在router目录的index.js中的父组件中添加Children这个参数，作为子组件**
+
+比如：
+
+```
+
+```
+
+
+
+> 如果在组件编写的过程中出现 **Component name index should be multi-word**则可以选择在eslintrc.cjs中配置，在module.exports中添加rules
+
+```
+rules:{
+    'vue/multi-word-component-names':0 //不再强制要求组件命名
+  }
+```
+
+路由入口在router的index.js中，出口则是在App.vue中引入这些路由
+
+
+
+**图片资源和样式资源**
+
+资源说明
+
+1. 实际工作中的图片资源通常由UI设计师提供，常见的图片格式由png，svg等都是由UI切图交给前端
+2. 样式资源通常是指项目初始化的时候进行样式重置，常见的比如开源的normalize.css或者手写
+
+资源操作
+
+1. 图片资源-把**images文件夹放到assets**目录下
+2. 样式资源-把**common.scss文件放到styles**目录下
+
+前端开发小助手  error lens：实时提供错误警告信息的VScode插件
