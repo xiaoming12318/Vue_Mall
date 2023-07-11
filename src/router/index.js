@@ -5,6 +5,7 @@ import Layout from '@/views/Layout/index.vue'
 import Login from '@/views/Login/index.vue'
 import Home from '@/views/Home/index.vue'
 import Category from '@/views/Category/index.vue'
+import nav from '@/views/Layout/components/LayoutNav.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -26,13 +27,14 @@ const router = createRouter({
       name:'L',
       component:Layout,
       children:[
-        {
-        path:'',
-        component:Home
-        },
+       
         {
           path:'category',
           component:Category
+        },
+        {
+          path:'nav',
+          component:nav
         }
       ]
     },
