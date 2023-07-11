@@ -1,4 +1,20 @@
 <script setup>
+import {getCategoryAPI} from '@/apis/layout'
+import { onMounted } from 'vue';
+import {ref} from 'vue'
+
+//准备响应式函数，装数据
+const categoryList=ref([])
+const getCategory=async()=>{
+  
+  const res=await getCategoryAPI()
+  categoryList.value=res.result
+
+}
+onMounted(()=>{
+  getCategory()
+})
+
 
 </script>
 
@@ -9,18 +25,11 @@
                 <RouterLink to="/">小兔鲜</RouterLink>
             </h1>
             <ul class="app-header-nav">
-                <li>
-                    <RouterLink to="/">首页</RouterLink>
+                <li class="home" v-for="item in categoryList" :key="item.id">
+                    <RouterLink to="/">{{item.name}}</RouterLink>
                 </li>
-                <li>
-                    <RouterLink to="/">居家</RouterLink>
-                </li>
-                <li>
-                    <RouterLink to="/">美食</RouterLink>
-                </li>
-                <li>
-                    <RouterLink to="/">服饰</RouterLink>
-                </li>
+
+                
             </ul>
             <div class="search">
                 <i class="iconfont icon-search"></i>
