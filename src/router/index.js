@@ -6,6 +6,7 @@ import Login from '@/views/Login/index.vue'
 import Home from '@/views/Home/index.vue'
 import Category from '@/views/Category/index.vue'
 import nav from '@/views/Layout/components/LayoutNav.vue'
+import Fixed from '@/views/Layout/components/LayoutFixed.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -22,12 +23,20 @@ const router = createRouter({
     //   // which is lazy-loaded when the route is visited.
     //   component: () => import('../views/AboutView.vue')
     // }
+    
     {
       path:'/',
       name:'L',
       component:Layout,
       children:[
-       
+        {
+          path:'/',
+          component:Fixed
+        },
+        {
+          path:'/',
+          component:Home
+        },
         {
           path:'category',
           component:Category
