@@ -146,3 +146,25 @@ rules:{
 v-img-lazy="item.picture"
 ```
 
+**懒加载优化**
+
+通过插件把**懒加载指令封装为插件**，main.js**入口文件只需要负责注册插件**即可
+
+**重复监听**
+
+useIntersectionObserver对于元素的监听是一直存在的，除非手动停止监听，存在**内存浪费**。
+
+解决思路：在监听的图片第一次完成加载之后就停止监听
+
+```
+const {stop}=useIntersectionObserver(
+	el,
+	([{isIntersecting}])=>{
+		if(isIntersecting){
+			el.src=binding.value
+			stop()
+		}
+	}
+)
+```
+
