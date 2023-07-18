@@ -179,3 +179,57 @@ const {stop}=useIntersectionObserver(
 
 
 **一级分类--整体认识和路由配置**
+
+
+
+
+
+**路由缓存问题**
+
+使用带有参数的路由时需要注意的是，当用户从**/users/johnny**导航到**/users/jolyne**时，相同的组件实例将被重复使用。因为两个路由都渲染同个组件，复用则显得更加高效。不过，这也意味着组件的**生命周期钩子不会被调用**
+
+**方案一：给router-view添加key**
+
+以当前路由完整路径为key的值，给router-view组件绑定
+
+```
+RouterView :key="$route.fullPath"
+```
+
+**方案二：使用beforeRouteUpdate导航钩子**
+
+beforeRouteUpdate钩子函数可以在每次路由更新之前执行，在**回调中执行徐娅数据更新的业务逻辑**即可
+
+或者使用**beforeRouteUpdate导航守卫**，也可以解决
+
+```
+const User={
+template:'...',
+async beforeRouteUpdate(to,from){
+//对路由变化做出响应...
+this.userData=await fetchUser(to.params.id)
+}
+}
+```
+
+
+
+1. 路由缓存问题产生的原因是什么？
+
+   **路由只有参数变化时，会复用组件实例**
+
+2. 两种方案都可以解决路由缓存问题，如何选择
+
+   **在意性能问题，选择onBeforeUpdate，精细化控制。不在意性能问题，选择key，简单粗暴**
+
+
+
+**概念理解**
+
+基于逻辑函数拆分业务是指把**同一个组件中独立的业务代码通过函数做封装处理**，提升**代码的可维护性**
+
+1. 按照业务声明以‘use’打头的逻辑函数
+2. 把**独立的业务逻辑**封装到各个函数内部
+3. 函数内部把组件中需要用到的数据或者方法**return出去**
+4. 在**组件中调用函数**把数据或者方法组合回来使用
+
