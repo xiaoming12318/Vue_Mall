@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 const httpInstance=axios.create({
-    //根域名
+    //根域名，请求这个路径
     baseURL:'http://pcapi-xiaotuxian-front-devtest.itheima.net',
     //超时时间
     timeout: 5000
