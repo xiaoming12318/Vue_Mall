@@ -287,3 +287,11 @@ Cannot read properties of undefined
 
 - 横向：elementX>300 left=200 elementX<100 left=0
 - 纵向：elementY>300 top=200 elementY<100 top=0
+
+
+
+# SKU的概念
+
+问：在实际工作中，经常会遇到别人写好的组件熟悉一个三方组件，首先重点看声明
+
+答：props和emit，**props决定了当前组件接收什么数据，emit决定了会产出什么数据**
