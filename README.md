@@ -240,3 +240,7 @@ this.userData=await fetchUser(to.params.id)
 # 商品列表
 
 最新商品、最高人气、评论最多、无限加载功能
+
+## 列表无限加载
+
+使用elementPlus提供的v-infinite-scroll指令**监听是否满足触底条件**，满足加载条件时让**页数参数加一获取下一页数据，做新老数据拼接渲染**
