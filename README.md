@@ -244,3 +244,46 @@ this.userData=await fetchUser(to.params.id)
 ## 列表无限加载
 
 使用elementPlus提供的v-infinite-scroll指令**监听是否满足触底条件**，满足加载条件时让**页数参数加一获取下一页数据，做新老数据拼接渲染**
+
+
+
+**报错**：渲染模板时遇到对象的多层属性访问可能出现声明问题？
+
+```
+Cannot read properties of undefined
+```
+
+**解决**：
+
+1. 可选链 ?.
+2. v-if控制渲染
+
+
+
+
+
+# 图片预览
+
+1. 通过小图切换大图显示
+
+   维护一个数组图片列表，**鼠标划入小图记录当前小图下标值，通过下标值在数组中取对应图片**
+
+2. 放大镜效果
+
+   - 左滑滑块跟随鼠标移动
+
+     获取当前的**鼠标在盒子内的相对位置(useMouseInElement),控制滑块跟随鼠标移动(left/top)**
+
+   - 右侧大图放大效果实现
+
+   - 鼠标移入，控制滑块和大图显示隐藏
+
+**有效移动范围内的计算逻辑**
+
+- 横向：100<elementX<300,left=elementX-小滑块宽度一般
+- 纵向：100<elementY<300,top=elementY-小滑块高度一半
+
+**边界距离控制**
+
+- 横向：elementX>300 left=200 elementX<100 left=0
+- 纵向：elementY>300 top=200 elementY<100 top=0
