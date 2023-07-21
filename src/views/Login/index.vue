@@ -5,7 +5,8 @@ import {ref,onMounted} from 'vue'
 //1.准备表单对象
 const form =ref({
   account:'',
-  password:''
+  password:'',
+  agree:true
 })
 //2.准备规则对象
 const rules={
@@ -15,6 +16,20 @@ const rules={
     password:[
         {required:true,message:'密码不能为空',trigger:'blur'},
         {min:6,max:14,message:'长度为6到14',trigger:'blur'}
+    ],
+    agree:[
+        {
+            validator:(rule,value,callback)=>{
+                console.log(value);
+                //自定义校验逻辑
+                //勾选就通过不勾选就不通过
+                if(value){
+                    callback()
+                }else{
+                    callback(new Error('请勾选协议'))
+                }
+            }
+        }
     ]
 }
 
@@ -51,8 +66,8 @@ const rules={
               <el-form-item prop="password" label="密码">
                 <el-input v-model="form.password"/>
               </el-form-item>
-              <el-form-item label-width="22px">
-                <el-checkbox  size="large">
+              <el-form-item prop="agree" label-width="22px">
+                <el-checkbox  size="large" v-model="form.agree">
                   我已同意隐私条款和服务条款
                 </el-checkbox>
               </el-form-item>

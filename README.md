@@ -303,3 +303,13 @@ Cannot read properties of undefined
 # 登录
 
 表单校验和登录登出业务
+
+自定义校验规则，的返回值
+
+```
+校验失败的callback
+callback(new Error('xxx'))
+校验成功的callback
+callback()
+```
+
