@@ -1,10 +1,11 @@
 <script setup>
-import {ref,onMounted} from 'vue'
-import {loginAPI} from '@/apis/user'
+import {ref} from 'vue'
 import 'element-plus/theme-chalk/el-message.css'
 import {ElMessage} from 'element-plus'
 import {useRouter} from 'vue-router'
-//表单校验（账户名+密码）
+import {useUserStore} from '@/stores/user'
+
+const userStore=useUserStore()
 
 //1.准备表单对象
 const form =ref({
@@ -48,8 +49,7 @@ const doLogin=()=>{
         if(valid){
             //xiaotuxian001
             //TODO LOGIN
-            const res=await loginAPI({account,password})
-            console.log(res);
+            await userStore.getUserInfo({account,password})
             //1.提示用户
             ElMessage({type:'success',message:'登录成功'})
             //2.跳转首页
