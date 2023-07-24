@@ -341,3 +341,15 @@ Pinia管理数据
 **操作state时会自动把用户数据在本地的localStorage也存一份，刷新的时候就会从localStorage中先取**
 
 在设置state的时候会自动把数据同步给localstorage，在获取state数据的时候会优先从localStorage中取
+
+
+
+Axios请求拦截器可以在接口正式发起之前对请求参数做一些事情，通常Token数据会被注入到**请求header**中，格式按照**后端要求的格式进行拼接处理**
+
+
+
+# 退出登录逻辑
+
+在pinia中自己定义一个方法交clearUserInfo可以清除用户数据
+
+然后再路由中有一个方法push可以映射到对应的地址上
