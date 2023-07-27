@@ -1,13 +1,17 @@
 <script setup>
 import { useUserStore } from '@/stores/user'
+import { useCartStore } from '@/stores/cartStore'
 import { useRouter } from 'vue-router'
 const userStore = useUserStore()
+const cartStore=useCartStore()
 const router = useRouter()
 const confirm = () => {
   console.log('用户要退出登录了')
   // 退出登录业务逻辑实现
   // 1.清除用户信息 触发action
   userStore.clearUserInfo()
+  //清除购物车数据
+  cartStore.delAllCartList()
   // 2.跳转到登录页
   router.push('/login')
 }
@@ -25,7 +29,7 @@ const confirm = () => {
                     <li>
                         <el-popconfirm @confirm="confirm" title="确认退出吗" confirm-button-text="确认" cancel-button-text="取消" >
                             <template #reference>
-                                <a href="javascript:;">退出登录</a>
+                                <a href="javascript:;" @click="">退出登录</a>
                             </template>
                         </el-popconfirm>
                     </li> 

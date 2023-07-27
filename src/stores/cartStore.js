@@ -52,6 +52,8 @@ export const useCartStore=defineStore('cart',()=>{
             cartList.value=res.result
     }
 
+    
+
     // 单选功能
     const singleCheck = (skuId,selected) => {
     // 通过skuId找到要修改的那一项 然后把它的selected修改为传过来的selected
@@ -81,6 +83,10 @@ export const useCartStore=defineStore('cart',()=>{
     //是否全选
     const isAll=computed(()=>cartList.value.every((item)=>item.selected===true))
 
+    //清空购物车
+    const delAllCartList=()=>{
+        cartList.value=[]
+    }
 
     return{
         cartList,
@@ -93,6 +99,8 @@ export const useCartStore=defineStore('cart',()=>{
         allCheck,
         selectedCount,
         selectedPrice,
+        delAllCartList,
+        updateNewList
         
     }
 },
